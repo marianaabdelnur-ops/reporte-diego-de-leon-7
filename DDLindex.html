@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diego de León 7 · Reporte de comercialización · Kanda Capital</title>
+<style>
+  :root{
+    --ink:#1A1A1A; --gold:#9E7A24; --paper:#FCFCFA; --line:#E6E2DB;
+    --gray:#6B6B6B; --graysoft:#9A968E; --panel:#F5F3EE; --altfill:#22201E; --field:#D8D3C7;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-font-smoothing:antialiased}
+  body{
+    background:#EDEBE5;color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.5;padding:32px 16px;
+  }
+  .page{max-width:1080px;margin:0 auto;background:var(--paper);padding:56px 60px 40px;box-shadow:0 8px 40px rgba(0,0,0,.10)}
+  .eyebrow{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700}
+  .muted{color:var(--gray)}
+
+  /* masthead */
+  .masthead{display:flex;justify-content:space-between;align-items:baseline}
+  .brand{font-size:15px;font-weight:800;letter-spacing:.02em;color:var(--gold)}
+  .brand span{color:var(--ink)}
+  .year{font-size:12px;letter-spacing:.18em;color:var(--graysoft)}
+  h1{font-family:Georgia,"Times New Roman",serif;font-size:46px;line-height:1;font-weight:700;margin-top:22px;letter-spacing:-.01em}
+  .sub{margin-top:12px;font-size:14px;color:var(--gray)}
+  .rule{height:2px;background:var(--gold);margin:22px 0 0}
+  .hr{height:1px;background:var(--line);border:0;margin:34px 0}
+  .section-head{display:flex;align-items:baseline;gap:14px;margin-bottom:18px}
+  .section-head .n{font-family:Georgia,serif;font-size:13px;color:var(--graysoft)}
+
+  /* FILTER BAR */
+  .filters{display:flex;flex-wrap:wrap;gap:26px;align-items:flex-end;margin-top:22px;padding:18px 22px;background:#F7F5EF;border:1px solid var(--line)}
+  .filter{display:flex;flex-direction:column;gap:7px}
+  .filter label{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gray);font-weight:700}
+  .control{font-size:13px;background:#fff;border:1px solid var(--field);border-radius:4px;padding:9px 13px;min-width:150px;color:var(--ink);display:flex;justify-content:space-between;gap:14px;align-items:center}
+  input.control,select.control{font-family:inherit;display:inline-block;appearance:auto;-webkit-appearance:auto;cursor:pointer}
+  input[type=date].control{min-width:140px}
+  select.control{min-width:200px}
+  input.control:focus,select.control:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 2px rgba(158,122,36,.18)}
+  ::-webkit-calendar-picker-indicator{cursor:pointer;opacity:.7}
+  .control .car{color:var(--gold);font-size:10px}
+  .daterow{display:flex;gap:8px}
+  .daterow .control{min-width:118px}
+  .seg{display:inline-flex;border:1px solid var(--field);border-radius:4px;overflow:hidden;background:#fff}
+  .seg span{font-size:12px;padding:9px 14px;cursor:pointer;color:var(--gray);border-right:1px solid #EDEAE2;user-select:none}
+  .seg span:last-child{border-right:0}
+  .seg span.on{background:var(--gold);color:#fff;font-weight:600}
+  .filter-note{flex-basis:100%;font-size:11px;color:var(--graysoft);font-style:italic;margin-top:2px}
+
+  /* hero KPIs */
+  .hero{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:0;margin-top:30px}
+  .kpi{padding:2px 22px;border-left:2px solid var(--line)}
+  .kpi:first-child{padding-left:0;border-left:0}
+  .kpi .num{font-family:Georgia,serif;font-size:52px;line-height:1;font-weight:700}
+  .kpi.lead .num{color:var(--gold)}
+  .kpi .lab{font-size:11.5px;letter-spacing:.04em;color:var(--gray);margin-top:8px}
+  .kpi .num.small{font-size:34px}
+  .subkpis{display:grid;grid-template-columns:1fr 1fr 2fr;gap:0;margin-top:22px;border-top:1px solid var(--line);padding-top:18px}
+  .subkpi{padding-right:22px}
+  .subkpi .n{font-family:Georgia,serif;font-size:26px;font-weight:700}
+  .subkpi .l{font-size:11px;letter-spacing:.05em;color:var(--gray);margin-top:3px}
+  .subkpi .l b{color:var(--ink);font-weight:600}
+
+  /* funnel */
+  .funnel{margin-top:8px}
+  .fstep{display:grid;grid-template-columns:150px 1fr 70px;align-items:center;gap:16px;margin:9px 0}
+  .fstep .flab{font-size:12.5px;letter-spacing:.03em}
+  .fbar{height:34px;background:var(--altfill);border-radius:1px}
+  .fbar.gold{background:var(--gold)}
+  .fnum{font-family:Georgia,serif;font-size:22px;font-weight:700;text-align:right}
+  .fconv{font-size:10.5px;color:var(--graysoft);margin-left:10px;letter-spacing:.02em}
+
+  /* fuente bars */
+  .fuente{max-width:540px}
+  .barrow{display:grid;grid-template-columns:150px 1fr 62px;align-items:center;gap:12px;margin:11px 0}
+  .barrow .bl{font-size:12.5px}
+  .track{height:12px;background:#EAE7E0;border-radius:6px;overflow:hidden}
+  .fillbar{height:100%;background:var(--ink);border-radius:6px}
+  .fillbar.gold{background:var(--gold)}
+  .barrow .bv{font-size:12px;text-align:right;color:var(--gray)}
+  .barrow .bv b{color:var(--ink)}
+
+  /* tables */
+  table{width:100%;border-collapse:collapse;font-size:12.5px}
+  th{font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--gray);text-align:left;padding:0 12px 9px;font-weight:600;border-bottom:1.5px solid var(--ink)}
+  th.r,td.r{text-align:right}
+  th.c,td.c{text-align:center}
+  td{padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  tr:last-child td{border-bottom:0}
+  tbody tr:hover{background:#F7F5F0}
+  .chip{display:inline-block;font-size:10.5px;font-weight:600;letter-spacing:.02em;padding:3px 9px;border-radius:20px;white-space:nowrap}
+  .chip.alta{background:#F4ECD6;color:var(--gold)}
+  .chip.mod{border:1px solid var(--ink);color:var(--ink)}
+  .chip.desc{background:#ECEAE4;color:var(--gray)}
+  .vy{color:var(--gold);font-weight:700}
+  .vn{color:var(--graysoft)}
+  .fb{font-size:12px;color:#3a3a3a;max-width:340px}
+
+  /* media */
+  .media{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:6px}
+  .panelhead{font-size:12px;font-weight:700;letter-spacing:.02em;margin-bottom:12px}
+  .panelhead span{color:var(--graysoft);font-weight:400}
+
+  /* feedback */
+  .fbcards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .fbcard{border-top:2px solid var(--gold);padding-top:14px}
+  .fbcard .q{font-family:Georgia,serif;font-size:15px;line-height:1.45;color:var(--ink)}
+  .fbcard .who{margin-top:12px;font-size:11.5px;color:var(--gray)}
+  .fbcard .who b{color:var(--ink)}
+  .insight{margin-top:26px;font-size:13px;color:#3a3a3a;border-left:2px solid var(--ink);padding-left:16px}
+
+  /* conclusion */
+  .concl{font-size:13.5px;line-height:1.6}
+  .actions{margin-top:18px;display:grid;grid-template-columns:1fr 1fr;gap:10px 40px}
+  .act{display:flex;gap:10px;font-size:12.5px;align-items:flex-start}
+  .act .d{color:var(--gold);font-weight:800;line-height:1.3}
+
+  .foot{margin-top:34px;font-size:10.5px;color:var(--graysoft);font-style:italic;border-top:1px solid var(--line);padding-top:12px;display:flex;justify-content:space-between}
+
+  @media (max-width:820px){
+    .page{padding:36px 22px}
+    .hero{grid-template-columns:1fr 1fr}
+    .subkpis,.media,.fbcards,.actions{grid-template-columns:1fr;gap:20px}
+    .filters{gap:16px}
+    h1{font-size:34px}
+  }
+  @media print{
+    body{background:#fff;padding:0}
+    .page{box-shadow:none;max-width:none;padding:24px 30px}
+    tbody tr:hover{background:none}
+    .filters{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .section-head,.panelhead{break-after:avoid}
+    tr,.fbcard,.fstep,.barrow,.kpi{break-inside:avoid}
+    .media,.fbcards,.funnel,.fuente,table{break-inside:avoid}
+    .hr{margin:22px 0}
+  }
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- MASTHEAD -->
+  <div class="masthead">
+    <div class="brand">DILS <span>/ LUCAS FOX</span></div>
+    <div class="year">MMXXVI</div>
+  </div>
+  <h1>Diego de León 7</h1>
+  <div class="sub">Reporte de leads y rendimiento comercial &nbsp;·&nbsp; Promotor: <b>Kanda Capital</b> &nbsp;·&nbsp; Salamanca, Madrid</div>
+  <div class="rule"></div>
+
+  <!-- FILTER BAR -->
+  <div class="filters">
+    <div class="filter">
+      <label>Rango de fechas</label>
+      <div class="daterow">
+        <input type="date" class="control" value="2026-06-01" aria-label="Fecha desde">
+        <input type="date" class="control" value="2026-07-06" aria-label="Fecha hasta">
+      </div>
+    </div>
+    <div class="filter">
+      <label>Fuente de lead</label>
+      <select class="control" aria-label="Fuente de lead">
+        <option>Todas las fuentes</option>
+        <option>Idealista</option>
+        <option>Fotocasa</option>
+        <option>Campañas Meta + Google</option>
+        <option>Web Lucas Fox</option>
+        <option>Referidos</option>
+      </select>
+    </div>
+    <div class="filter">
+      <label>Descartados</label>
+      <div class="seg" id="segDesc">
+        <span class="on">Todos</span>
+        <span>Sin descartados</span>
+        <span>Solo descartados</span>
+      </div>
+    </div>
+    <div class="filter-note">Haz clic en los campos de fecha para abrir el calendario y elegir el rango. Esta es una vista de ejemplo; el filtrado en vivo sobre todos los datos se realiza en Power BI.</div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="kpi lead"><div class="num">22</div><div class="lab">Leads captados en el periodo</div></div>
+    <div class="kpi"><div class="num small">4</div><div class="lab">Alta probabilidad</div></div>
+    <div class="kpi"><div class="num small">5</div><div class="lab">Visitas realizadas</div></div>
+    <div class="kpi"><div class="num small">2 · 1</div><div class="lab">Ofertas · Reservas</div></div>
+  </div>
+  <div class="subkpis">
+    <div class="subkpi"><div class="n">16.180</div><div class="l">Impresiones <b>Meta + Google</b></div></div>
+    <div class="subkpi"><div class="n">2,45%</div><div class="l">CTR medio de campañas</div></div>
+    <div class="subkpi"></div>
+  </div>
+
+  <hr class="hr">
+
+  <!-- FUNNEL -->
+  <div class="section-head"><span class="eyebrow">Recorrido comercial</span></div>
+  <div class="funnel">
+    <div class="fstep"><div class="flab">Leads captados</div><div class="fbar" style="width:100%"></div><div class="fnum">22</div></div>
+    <div class="fstep"><div class="flab">Cualificados <span class="fconv">64% de los leads</span></div><div class="fbar" style="width:64%"></div><div class="fnum">14</div></div>
+    <div class="fstep"><div class="flab">Con visita <span class="fconv">36% de cualificados</span></div><div class="fbar" style="width:23%"></div><div class="fnum">5</div></div>
+    <div class="fstep"><div class="flab">Con oferta <span class="fconv">40% de visitas</span></div><div class="fbar" style="width:9%"></div><div class="fnum">2</div></div>
+    <div class="fstep"><div class="flab">Reserva <span class="fconv">1 unidad</span></div><div class="fbar gold" style="width:5%"></div><div class="fnum" style="color:var(--gold)">1</div></div>
+  </div>
+
+  <hr class="hr">
+
+  <!-- FUENTE -->
+  <div class="section-head"><span class="eyebrow">Volumen por fuente</span></div>
+  <div class="fuente">
+    <div class="barrow"><div class="bl">Idealista</div><div class="track"><div class="fillbar gold" style="width:100%"></div></div><div class="bv"><b>9</b> · 41%</div></div>
+    <div class="barrow"><div class="bl">Campañas Meta + Google</div><div class="track"><div class="fillbar" style="width:56%"></div></div><div class="bv"><b>5</b> · 23%</div></div>
+    <div class="barrow"><div class="bl">Fotocasa</div><div class="track"><div class="fillbar" style="width:33%"></div></div><div class="bv"><b>3</b> · 14%</div></div>
+    <div class="barrow"><div class="bl">Web Lucas Fox</div><div class="track"><div class="fillbar" style="width:33%"></div></div><div class="bv"><b>3</b> · 14%</div></div>
+    <div class="barrow"><div class="bl">Referidos</div><div class="track"><div class="fillbar" style="width:22%"></div></div><div class="bv"><b>2</b> · 9%</div></div>
+  </div>
+
+  <hr class="hr">
+
+  <!-- REGISTRO -->
+  <div class="section-head"><span class="eyebrow">Registro de leads</span><span class="n muted">muestra · 12 de 22</span></div>
+  <table>
+    <thead><tr><th>Fecha</th><th>Cliente</th><th>Nacionalidad</th><th>Fuente</th><th>Agente</th><th>Calificación</th><th class="c">Visita</th><th>Feedback comercial</th></tr></thead>
+    <tbody>
+      <tr><td>30/06</td><td>Carmen Baena</td><td>España</td><td>Idealista</td><td>S. Ehrli</td><td><span class="chip alta">Alta</span></td><td class="c vy">Sí</td><td class="fb">Visitó el 3.2, valora presentar oferta.</td></tr>
+      <tr><td>30/06</td><td>Gustavo Moure</td><td>Argentina</td><td>Web Lucas Fox</td><td>B. Fernández</td><td><span class="chip mod">Moderado</span></td><td class="c vn">No</td><td class="fb">Inversor LATAM, solicita rentabilidad estimada.</td></tr>
+      <tr><td>01/07</td><td>Helena Pastor</td><td>España</td><td>Campañas</td><td>K. Mojica</td><td><span class="chip mod">Moderado</span></td><td class="c vn">No</td><td class="fb">Interesada en 3 dormitorios, pide planos y acabados.</td></tr>
+      <tr><td>01/07</td><td>Sarah Whitmore</td><td>Reino Unido</td><td>Idealista</td><td>S. Ehrli</td><td><span class="chip mod">Moderado</span></td><td class="c vn">No</td><td class="fb">Pied-à-terre, dossier en inglés enviado.</td></tr>
+      <tr><td>02/07</td><td>Carlos Méndez</td><td>México</td><td>Idealista</td><td>K. Mojica</td><td><span class="chip alta">Alta</span></td><td class="c vy">Sí</td><td class="fb">Comprador final, visita muy positiva.</td></tr>
+      <tr><td>02/07</td><td>Fernando Quijano</td><td>Colombia</td><td>Campañas</td><td>K. Mojica</td><td><span class="chip desc">Descartado</span></td><td class="c vn">No</td><td class="fb">Presupuesto por debajo del ticket del proyecto.</td></tr>
+      <tr><td>03/07</td><td>Familia Rossi</td><td>Italia</td><td>Fotocasa</td><td>J.C. Igartua</td><td><span class="chip alta">Alta</span></td><td class="c vy">Sí</td><td class="fb">4 dorm. con terraza, segunda visita agendada.</td></tr>
+      <tr><td>03/07</td><td>Dora Ferrer</td><td>España</td><td>Campañas</td><td>K. Mojica</td><td><span class="chip desc">Descartado</span></td><td class="c vn">No</td><td class="fb">Sin respuesta tras varios intentos de contacto.</td></tr>
+      <tr><td>04/07</td><td>Senem Kurutluoglu</td><td>Turquía</td><td>Idealista</td><td>K. Mojica</td><td><span class="chip mod">Moderado</span></td><td class="c vn">No</td><td class="fb">Buen encaje de perfil, solicita videollamada.</td></tr>
+      <tr><td>04/07</td><td>Maritza Corredor</td><td>España</td><td>Fotocasa</td><td>J.C. Igartua</td><td><span class="chip mod">Moderado</span></td><td class="c vn">No</td><td class="fb">Consulta condiciones de financiación.</td></tr>
+      <tr><td>05/07</td><td>Alberto Tapia</td><td>España</td><td>Referido</td><td>B. Fernández</td><td><span class="chip alta">Alta</span></td><td class="c vy">Sí</td><td class="fb">Referido de cliente actual, perfil muy cualificado.</td></tr>
+      <tr><td>05/07</td><td>Emilio Emargulis</td><td>España</td><td>Campañas</td><td>J. Welstead</td><td><span class="chip desc">Descartado</span></td><td class="c vn">No</td><td class="fb">Buscaba otro producto, no elegible para el proyecto.</td></tr>
+    </tbody>
+  </table>
+
+  <hr class="hr">
+
+  <!-- MEDIOS -->
+  <div class="section-head"><span class="eyebrow">Rendimiento de medios</span></div>
+  <div class="media">
+    <div>
+      <div class="panelhead">Portales <span>· visibilidad y contacto</span></div>
+      <table>
+        <thead><tr><th>Portal</th><th class="r">Visitas ficha</th><th class="r">Favoritos</th><th class="r">Contactos</th></tr></thead>
+        <tbody>
+          <tr><td>Idealista</td><td class="r">640</td><td class="r">22</td><td class="r">9</td></tr>
+          <tr><td>Fotocasa</td><td class="r">180</td><td class="r">6</td><td class="r">3</td></tr>
+          <tr><td>Web Lucas Fox</td><td class="r">210</td><td class="r">4</td><td class="r">3</td></tr>
+          <tr style="font-weight:700"><td>Total</td><td class="r">1.030</td><td class="r">32</td><td class="r">15</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <div class="panelhead">Campañas de pago <span>· Meta + Google</span></div>
+      <table>
+        <thead><tr><th>Canal</th><th class="r">Impresiones</th><th class="r">Clics</th><th class="r">CTR</th><th class="r">Leads</th></tr></thead>
+        <tbody>
+          <tr><td>Meta</td><td class="r">14.200</td><td class="r">305</td><td class="r">2,15%</td><td class="r">6</td></tr>
+          <tr><td>Google Search</td><td class="r">1.980</td><td class="r">92</td><td class="r">4,65%</td><td class="r">2</td></tr>
+          <tr style="font-weight:700"><td>Total</td><td class="r">16.180</td><td class="r">397</td><td class="r">2,45%</td><td class="r">8</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <hr class="hr">
+
+  <!-- FEEDBACK -->
+  <div class="section-head"><span class="eyebrow">Feedback comercial destacado</span></div>
+  <div class="fbcards">
+    <div class="fbcard"><div class="q">"Visitó el 3.2 y ya valora presentar oferta."</div><div class="who"><b>Carmen Baena</b> · España · Alta probabilidad</div></div>
+    <div class="fbcard"><div class="q">"Cuatro dormitorios con terraza; segunda visita agendada con la familia."</div><div class="who"><b>Familia Rossi</b> · Italia · Alta probabilidad</div></div>
+    <div class="fbcard"><div class="q">"Referido de un cliente actual, perfil muy cualificado y de compra final."</div><div class="who"><b>Alberto Tapia</b> · España · Alta probabilidad</div></div>
+  </div>
+  <div class="insight">Los descartes se concentran en presupuesto por debajo del ticket y en falta de respuesta. La calidad del lead se mantiene alta en el mercado nacional y LATAM.</div>
+
+  <hr class="hr">
+
+  <!-- CONCLUSION -->
+  <div class="section-head"><span class="eyebrow">Conclusión ejecutiva y próximas acciones</span></div>
+  <div class="concl">
+    Buen volumen y calidad de leads en el periodo: 22 contactos, 4 de alta probabilidad y una reserva formalizada. Idealista y las campañas de pago concentran la mayor parte de la captación, con buen rendimiento del vídeo en Meta. La conversión a visita (23%) y a oferta se sostiene en el perfil nacional e internacional de compra final.
+  </div>
+  <div class="actions">
+    <div class="act"><span class="d">→</span><span>Cerrar la oferta de Carmen Baena (unidad 3.2) y acompañar la reserva en curso.</span></div>
+    <div class="act"><span class="d">→</span><span>Escalar creatividades de vídeo en Meta y sostener presencia en Idealista.</span></div>
+    <div class="act"><span class="d">→</span><span>Priorizar seguimiento de los leads de alta probabilidad con visita agendada.</span></div>
+    <div class="act"><span class="d">→</span><span>Revisar mensajes de campaña para filtrar mejor por presupuesto y reducir descartes.</span></div>
+  </div>
+
+  <div class="foot">
+    <span>Diego de León 7 · Reporte de comercialización · Dils Lucas Fox para Kanda Capital</span>
+    <span>Ejemplo ilustrativo · datos de muestra</span>
+  </div>
+
+</div>
+
+<script>
+  // Filtros de demostración (visual): reflejan la experiencia de Power BI
+  var seg = document.getElementById('segDesc');
+  if (seg) {
+    seg.querySelectorAll('span').forEach(function(s){
+      s.addEventListener('click', function(){
+        seg.querySelectorAll('span').forEach(function(x){ x.classList.remove('on'); });
+        s.classList.add('on');
+      });
+    });
+  }
+</script>
+</body>
+</html>
