@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diego de León 7 · Reporte de comercialización · Kanda Capital</title>
+<style>
+  :root{
+    --ink:#1A1A1A; --gold:#9E7A24; --paper:#FCFCFA; --line:#E6E2DB;
+    --gray:#6B6B6B; --graysoft:#9A968E; --panel:#F5F3EE; --altfill:#22201E; --field:#D8D3C7;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-font-smoothing:antialiased}
+  body{
+    background:#EDEBE5;color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.5;padding:32px 16px;
+  }
+  .page{max-width:1080px;margin:0 auto;background:var(--paper);padding:56px 60px 40px;box-shadow:0 8px 40px rgba(0,0,0,.10)}
+  .eyebrow{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700}
+  .muted{color:var(--gray)}
+
+  /* masthead */
+  .masthead{display:flex;justify-content:space-between;align-items:baseline}
+  .brand{font-size:15px;font-weight:800;letter-spacing:.02em;color:var(--gold)}
+  .brand span{color:var(--ink)}
+  .brand-logo{height:34px;width:auto;display:block}
+  .year{font-size:12px;letter-spacing:.18em;color:var(--graysoft)}
+  h1{font-family:Georgia,"Times New Roman",serif;font-size:46px;line-height:1;font-weight:700;margin-top:22px;letter-spacing:-.01em}
+  .sub{margin-top:12px;font-size:14px;color:var(--gray)}
+  .rule{height:2px;background:var(--gold);margin:22px 0 0}
+  .hr{height:1px;background:var(--line);border:0;margin:34px 0}
+  .section-head{display:flex;align-items:baseline;gap:14px;margin-bottom:18px}
+  .section-head .n{font-family:Georgia,serif;font-size:13px;color:var(--graysoft)}
+
+  /* FILTER BAR */
+  .filters{display:flex;flex-wrap:wrap;gap:26px;align-items:flex-end;margin-top:22px;padding:18px 22px;background:#F7F5EF;border:1px solid var(--line)}
+  .filter{display:flex;flex-direction:column;gap:7px}
+  .filter label{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gray);font-weight:700}
+  .control{font-size:13px;background:#fff;border:1px solid var(--field);border-radius:4px;padding:9px 13px;min-width:150px;color:var(--ink);display:flex;justify-content:space-between;gap:14px;align-items:center}
+  input.control,select.control{font-family:inherit;display:inline-block;appearance:auto;-webkit-appearance:auto;cursor:pointer}
+  input[type=date].control{min-width:140px}
+  select.control{min-width:200px}
+  input.control:focus,select.control:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 2px rgba(158,122,36,.18)}
+  ::-webkit-calendar-picker-indicator{cursor:pointer;opacity:.7}
+  .control .car{color:var(--gold);font-size:10px}
+  .daterow{display:flex;gap:8px}
+  .daterow .control{min-width:118px}
+  .seg{display:inline-flex;border:1px solid var(--field);border-radius:4px;overflow:hidden;background:#fff}
+  .seg span{font-size:12px;padding:9px 14px;cursor:pointer;color:var(--gray);border-right:1px solid #EDEAE2;user-select:none}
+  .seg span:last-child{border-right:0}
+  .seg span.on{background:var(--gold);color:#fff;font-weight:600}
+  .filter-note{flex-basis:100%;font-size:11px;color:var(--graysoft);font-style:italic;margin-top:2px}
+
+  /* hero KPIs */
+  .hero{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:0;margin-top:30px}
+  .kpi{padding:2px 22px;border-left:2px solid var(--line)}
+  .kpi:first-child{padding-left:0;border-left:0}
+  .kpi .num{font-family:Georgia,serif;font-size:52px;line-height:1;font-weight:700}
+  .kpi.lead .num{color:var(--gold)}
+  .kpi .lab{font-size:11.5px;letter-spacing:.04em;color:var(--gray);margin-top:8px}
+  .kpi .num.small{font-size:34px}
+  .subkpis{display:grid;grid-template-columns:1fr 1fr 2fr;gap:0;margin-top:22px;border-top:1px solid var(--line);padding-top:18px}
+  .subkpi{padding-right:22px}
+  .subkpi .n{font-family:Georgia,serif;font-size:26px;font-weight:700}
+  .subkpi .l{font-size:11px;letter-spacing:.05em;color:var(--gray);margin-top:3px}
+  .subkpi .l b{color:var(--ink);font-weight:600}
+
+  /* funnel */
+  .funnel{margin-top:8px}
+  .fstep{display:grid;grid-template-columns:150px 1fr 70px;align-items:center;gap:16px;margin:9px 0}
+  .fstep .flab{font-size:12.5px;letter-spacing:.03em}
+  .fbar{height:34px;background:var(--altfill);border-radius:1px}
+  .fbar.gold{background:var(--gold)}
+  .fnum{font-family:Georgia,serif;font-size:22px;font-weight:700;text-align:right}
+  .fconv{font-size:10.5px;color:var(--graysoft);margin-left:10px;letter-spacing:.02em}
+
+  /* fuente bars */
+  .fuente{max-width:540px}
+  .barrow{display:grid;grid-template-columns:150px 1fr 62px;align-items:center;gap:12px;margin:11px 0}
+  .barrow .bl{font-size:12.5px}
+  .track{height:12px;background:#EAE7E0;border-radius:6px;overflow:hidden}
+  .fillbar{height:100%;background:var(--ink);border-radius:6px}
+  .fillbar.gold{background:var(--gold)}
+  .barrow .bv{font-size:12px;text-align:right;color:var(--gray)}
+  .barrow .bv b{color:var(--ink)}
+
+  /* pie / donut charts */
+  .charts{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:6px}
+  svg.donut{width:132px;height:132px;flex:none}
+  .chartrow{display:flex;align-items:center;gap:22px}
+  .legend{font-size:12px;flex:1}
+  .legend .li{display:flex;align-items:center;gap:9px;margin:7px 0}
+  .legend .sw{width:11px;height:11px;border-radius:2px;flex:none}
+  .legend .val{margin-left:auto;color:var(--gray);white-space:nowrap}
+  .legend .val b{color:var(--ink)}
+
+  /* tables */
+  table{width:100%;border-collapse:collapse;font-size:12.5px}
+  th{font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--gray);text-align:left;padding:0 12px 9px;font-weight:600;border-bottom:1.5px solid var(--ink)}
+  th.r,td.r{text-align:right}
+  th.c,td.c{text-align:center}
+  td{padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  tr:last-child td{border-bottom:0}
+  tbody tr:hover{background:#F7F5F0}
+  .chip{display:inline-block;font-size:10.5px;font-weight:600;letter-spacing:.02em;padding:3px 9px;border-radius:20px;white-space:nowrap}
+  .chip.alta{background:#F4ECD6;color:var(--gold)}
+  .chip.mod{border:1px solid var(--ink);color:var(--ink)}
+  .chip.desc{background:#ECEAE4;color:var(--gray)}
+  .vy{color:var(--gold);font-weight:700}
+  .vn{color:var(--graysoft)}
+  .fb{font-size:12px;color:#3a3a3a;max-width:340px}
+
+  /* media */
+  .media{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:6px}
+  .panelhead{font-size:12px;font-weight:700;letter-spacing:.02em;margin-bottom:12px}
+  .panelhead span{color:var(--graysoft);font-weight:400}
+
+  /* feedback */
+  .fbcards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .fbcard{border-top:2px solid var(--gold);padding-top:14px}
+  .fbcard .q{font-family:Georgia,serif;font-size:15px;line-height:1.45;color:var(--ink)}
+  .fbcard .who{margin-top:12px;font-size:11.5px;color:var(--gray)}
+  .fbcard .who b{color:var(--ink)}
+  .insight{margin-top:26px;font-size:13px;color:#3a3a3a;border-left:2px solid var(--ink);padding-left:16px}
+
+  /* conclusion */
+  .concl{font-size:13.5px;line-height:1.6}
+  .actions{margin-top:18px;display:grid;grid-template-columns:1fr 1fr;gap:10px 40px}
+  .act{display:flex;gap:10px;font-size:12.5px;align-items:flex-start}
+  .act .d{color:var(--gold);font-weight:800;line-height:1.3}
+
+  .foot{margin-top:34px;font-size:10.5px;color:var(--graysoft);font-style:italic;border-top:1px solid var(--line);padding-top:12px;display:flex;justify-content:space-between}
+
+  @media (max-width:820px){
+    .page{padding:36px 22px}
+    .hero{grid-template-columns:1fr 1fr}
+    .subkpis,.media,.fbcards,.actions{grid-template-columns:1fr;gap:20px}
+    .filters{gap:16px}
+    h1{font-size:34px}
+  }
+  @media print{
+    body{background:#fff;padding:0}
+    .page{box-shadow:none;max-width:none;padding:24px 30px}
+    tbody tr:hover{background:none}
+    .filters{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .section-head,.panelhead{break-after:avoid}
+    tr,.fbcard,.fstep,.barrow,.kpi{break-inside:avoid}
+    .media,.fbcards,.funnel,.fuente,table{break-inside:avoid}
+    .hr{margin:22px 0}
+  }
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- MASTHEAD -->
+  <div class="masthead">
+    <img class="brand-logo" src="data:image/png;base64,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" alt="Dils Lucas Fox">
+  </div>
+  <h1>Diego de León 7</h1>
+  <div class="sub">Reporte de leads y rendimiento comercial &nbsp;·&nbsp; Promotor: <b>Kanda Capital</b> &nbsp;·&nbsp; Salamanca, Madrid</div>
+  <div class="rule"></div>
+
+  <!-- FILTER BAR -->
+  <div class="filters">
+    <div class="filter">
+      <label>Rango de fechas</label>
+      <div class="daterow">
+        <input type="date" class="control" value="2026-06-01" aria-label="Fecha desde">
+        <input type="date" class="control" value="2026-07-06" aria-label="Fecha hasta">
+      </div>
+    </div>
+    <div class="filter">
+      <label>Fuente de lead</label>
+      <select class="control" aria-label="Fuente de lead">
+        <option>Todas las fuentes</option>
+        <option>Idealista</option>
+        <option>Fotocasa</option>
+        <option>Campañas Meta + Google</option>
+        <option>Web Lucas Fox</option>
+        <option>Referidos</option>
+      </select>
+    </div>
+    <div class="filter-note">Haz clic en los campos de fecha para abrir el calendario y elegir el rango. Esta es una vista de ejemplo; el filtrado en vivo sobre todos los datos se realiza en Power BI.</div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="kpi lead"><div class="num">22</div><div class="lab">Leads captados en el periodo</div></div>
+    <div class="kpi"><div class="num small">5</div><div class="lab">Visitas realizadas</div></div>
+    <div class="kpi"><div class="num small">2 · 1</div><div class="lab">Ofertas · Reservas</div></div>
+    <div class="kpi"><div class="num small">1.240</div><div class="lab">Tráfico web · sesiones</div></div>
+  </div>
+
+  <hr class="hr">
+
+  <!-- FUNNEL -->
+  <div class="section-head"><span class="eyebrow">Recorrido comercial</span></div>
+  <div class="funnel">
+    <div class="fstep"><div class="flab">Leads captados</div><div class="fbar" style="width:100%"></div><div class="fnum">22</div></div>
+    <div class="fstep"><div class="flab">Cualificados <span class="fconv">64% de los leads</span></div><div class="fbar" style="width:64%"></div><div class="fnum">14</div></div>
+    <div class="fstep"><div class="flab">Con visita <span class="fconv">36% de cualificados</span></div><div class="fbar" style="width:23%"></div><div class="fnum">5</div></div>
+    <div class="fstep"><div class="flab">Con oferta <span class="fconv">40% de visitas</span></div><div class="fbar" style="width:9%"></div><div class="fnum">2</div></div>
+    <div class="fstep"><div class="flab">Reserva <span class="fconv">1 unidad</span></div><div class="fbar gold" style="width:5%"></div><div class="fnum" style="color:var(--gold)">1</div></div>
+  </div>
+
+  <hr class="hr">
+
+  <!-- FUENTE + NACIONALIDAD -->
+  <div class="charts">
+    <div class="chartblock">
+      <div class="section-head"><span class="eyebrow">Volumen por fuente</span></div>
+      <div class="chartrow"><svg class="donut" viewBox="0 0 42 42" role="img" aria-label="Distribución"><circle cx="21" cy="21" r="15.9155" fill="none" stroke="#EFECE4" stroke-width="7"/><circle cx="21" cy="21" r="15.9155" fill="none" stroke="#9E7A24" stroke-width="7" stroke-dasharray="40.909 59.091" stroke-dashoffset="25"/><circle cx="21" cy="21" r="15.9155" fill="none" stroke="#1A1A1A" stroke-width="7" stroke-dasharray="22.727 77.273" stroke-dashoffset="-15.909"/><circle cx="21" cy="21" r="15.9155" fill="none" stroke="#7A756B" stroke-width="7" stroke-dasharray="13.636 86.364" stroke-dashoffset="-38.636"/><circle cx="21" cy="21" r="15.9155" fill="none" stroke="#B0A990" stroke-width="7" stroke-dasharray="13.636 86.364" stroke-dashoffset="-52.273"/><circle cx="21" cy="21" r="15.9155" fill="none" stroke="#D3CDC0" stroke-width="7" stroke-dasharray="9.091 90.909" stroke-dashoffset="-65.909"/><text x="21" y="20.6" text-anchor="middle" font-size="7.5" font-weight="700" fill="#1A1A1A" font-family="Georgia,serif">22</text><text x="21" y="25.7" text-anchor="middle" font-size="3.1" fill="#6B6B6B" letter-spacing="0.4">LEADS</text></svg><div class="legend"><div class="li"><span class="sw" style="background:#9E7A24"></span><span>Idealista</span><span class="val"><b>9</b> · 41%</span></div><div class="li"><span class="sw" style="background:#1A1A1A"></span><span>Campañas Meta + Google</span><span class="val"><b>5</b> · 23%</span></div><div class="li"><span class="sw" style="background:#7A756B"></span><span>Fotocasa</span><span class="val"><b>3</b> · 14%</span></div><div class="li"><span class="sw" style="background:#B0A990"></span><span>Web Lucas Fox</span><span class="val"><b>3</b> · 14%</span></div><div class="li"><span class="sw" style="background:#D3CDC0"></span><span>Referidos</span><span class="val"><b>2</b> · 9%</span></div></div></div>
+    </div>
+    <div class="chartblock">
+      <div class="section-head"><span class="eyebrow">Nacionalidad del lead</span></div>
+      <div class="chartrow"><svg class="donut" viewBox="0 0 42 42" role="img" aria-label="Distribución"><circle cx="21" cy="21" r="15.9155" fill="none" stroke="#EFECE4" stroke-width="7"/><circle cx="21" cy="21" r="15.9155" fill="none" stroke="#9E7A24" stroke-width="7" stroke-dasharray="50.0 50.0" stroke-dashoffset="25"/><circle cx="21" cy="21" r="15.9155" fill="none" stroke="#1A1A1A" stroke-width="7" stroke-dasharray="22.727 77.273" stroke-dashoffset="-25.0"/><circle cx="21" cy="21" r="15.9155" fill="none" stroke="#7A756B" stroke-width="7" stroke-dasharray="9.091 90.909" stroke-dashoffset="-47.727"/><circle cx="21" cy="21" r="15.9155" fill="none" stroke="#B0A990" stroke-width="7" stroke-dasharray="9.091 90.909" stroke-dashoffset="-56.818"/><circle cx="21" cy="21" r="15.9155" fill="none" stroke="#D3CDC0" stroke-width="7" stroke-dasharray="4.545 95.455" stroke-dashoffset="-65.909"/><circle cx="21" cy="21" r="15.9155" fill="none" stroke="#E6E2DB" stroke-width="7" stroke-dasharray="4.545 95.455" stroke-dashoffset="-70.455"/><text x="21" y="20.6" text-anchor="middle" font-size="7.5" font-weight="700" fill="#1A1A1A" font-family="Georgia,serif">22</text><text x="21" y="25.7" text-anchor="middle" font-size="3.1" fill="#6B6B6B" letter-spacing="0.4">LEADS</text></svg><div class="legend"><div class="li"><span class="sw" style="background:#9E7A24"></span><span>España</span><span class="val"><b>11</b> · 50%</span></div><div class="li"><span class="sw" style="background:#1A1A1A"></span><span>LATAM</span><span class="val"><b>5</b> · 23%</span></div><div class="li"><span class="sw" style="background:#7A756B"></span><span>Reino Unido / Irlanda</span><span class="val"><b>2</b> · 9%</span></div><div class="li"><span class="sw" style="background:#B0A990"></span><span>Europa (resto)</span><span class="val"><b>2</b> · 9%</span></div><div class="li"><span class="sw" style="background:#D3CDC0"></span><span>Oriente Medio</span><span class="val"><b>1</b> · 5%</span></div><div class="li"><span class="sw" style="background:#E6E2DB"></span><span>Sin definir</span><span class="val"><b>1</b> · 5%</span></div></div></div>
+    </div>
+  </div>
+
+  <hr class="hr">
+
+  <!-- REGISTRO -->
+  <div class="section-head"><span class="eyebrow">Registro de leads cualificados</span><span class="n muted">muestra · 9 de 14</span></div>
+  <table>
+    <thead><tr><th>Fecha</th><th>Cliente</th><th>Fuente</th><th>Agente</th><th>Calificación</th><th class="c">Visita</th><th>Feedback comercial</th></tr></thead>
+    <tbody>
+      <tr><td>30/06</td><td>Carmen Baena</td><td>Idealista</td><td>S. Ehrli</td><td><span class="chip alta">Alta</span></td><td class="c vy">Sí</td><td class="fb">Visitó el 3.2, valora presentar oferta.</td></tr>
+      <tr><td>30/06</td><td>Gustavo Moure</td><td>Web Lucas Fox</td><td>B. Fernández</td><td><span class="chip mod">Moderado</span></td><td class="c vn">No</td><td class="fb">Inversor LATAM, solicita rentabilidad estimada.</td></tr>
+      <tr><td>01/07</td><td>Helena Pastor</td><td>Campañas</td><td>K. Mojica</td><td><span class="chip mod">Moderado</span></td><td class="c vn">No</td><td class="fb">Interesada en 3 dormitorios, pide planos y acabados.</td></tr>
+      <tr><td>01/07</td><td>Sarah Whitmore</td><td>Idealista</td><td>S. Ehrli</td><td><span class="chip mod">Moderado</span></td><td class="c vn">No</td><td class="fb">Pied-à-terre, dossier en inglés enviado.</td></tr>
+      <tr><td>02/07</td><td>Carlos Méndez</td><td>Idealista</td><td>K. Mojica</td><td><span class="chip alta">Alta</span></td><td class="c vy">Sí</td><td class="fb">Comprador final, visita muy positiva.</td></tr>
+      <tr><td>03/07</td><td>Familia Rossi</td><td>Fotocasa</td><td>J.C. Igartua</td><td><span class="chip alta">Alta</span></td><td class="c vy">Sí</td><td class="fb">4 dorm. con terraza, segunda visita agendada.</td></tr>
+      <tr><td>04/07</td><td>Senem Kurutluoglu</td><td>Idealista</td><td>K. Mojica</td><td><span class="chip mod">Moderado</span></td><td class="c vn">No</td><td class="fb">Buen encaje de perfil, solicita videollamada.</td></tr>
+      <tr><td>04/07</td><td>Maritza Corredor</td><td>Fotocasa</td><td>J.C. Igartua</td><td><span class="chip mod">Moderado</span></td><td class="c vn">No</td><td class="fb">Consulta condiciones de financiación.</td></tr>
+      <tr><td>05/07</td><td>Alberto Tapia</td><td>Referido</td><td>B. Fernández</td><td><span class="chip alta">Alta</span></td><td class="c vy">Sí</td><td class="fb">Referido de cliente actual, perfil muy cualificado.</td></tr>
+    </tbody>
+  </table>
+
+  <hr class="hr">
+
+  <!-- FEEDBACK -->
+  <div class="section-head"><span class="eyebrow">Feedback comercial destacado</span></div>
+  <div class="fbcards">
+    <div class="fbcard"><div class="q">"Visitó el 3.2 y ya valora presentar oferta."</div><div class="who"><b>Carmen Baena</b> · España · Alta probabilidad</div></div>
+    <div class="fbcard"><div class="q">"Cuatro dormitorios con terraza; segunda visita agendada con la familia."</div><div class="who"><b>Familia Rossi</b> · Italia · Alta probabilidad</div></div>
+    <div class="fbcard"><div class="q">"Referido de un cliente actual, perfil muy cualificado y de compra final."</div><div class="who"><b>Alberto Tapia</b> · España · Alta probabilidad</div></div>
+  </div>
+
+  <hr class="hr">
+
+  <!-- CONCLUSION -->
+  <div class="section-head"><span class="eyebrow">Conclusión ejecutiva y próximas acciones</span></div>
+  <div class="concl">
+    Buen volumen y calidad de leads en el periodo: 22 contactos, 4 de alta probabilidad y una reserva formalizada. Idealista y las campañas de pago concentran la mayor parte de la captación. La conversión a visita (23%) y a oferta se sostiene en el perfil nacional e internacional de compra final.
+  </div>
+  <div class="actions">
+    <div class="act"><span class="d">→</span><span>Cerrar la oferta de Carmen Baena (unidad 3.2) y acompañar la reserva en curso.</span></div>
+    <div class="act"><span class="d">→</span><span>Sostener la presencia en Idealista y la inversión en los canales de mayor calidad de lead.</span></div>
+    <div class="act"><span class="d">→</span><span>Priorizar seguimiento de los leads de alta probabilidad con visita agendada.</span></div>
+    <div class="act"><span class="d">→</span><span>Reforzar el mensaje y el encaje de producto para atraer perfiles de mayor calidad.</span></div>
+  </div>
+
+  <div class="foot">
+    <span>Diego de León 7 · Reporte de comercialización · Dils Lucas Fox para Kanda Capital</span>
+    <span>Ejemplo ilustrativo · datos de muestra</span>
+  </div>
+
+</div>
+
+</body>
+</html>
